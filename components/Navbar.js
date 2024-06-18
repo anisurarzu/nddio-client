@@ -59,10 +59,7 @@ const Navbar = () => {
             <div
               className="flex-shrink-0 text-white p-2  rounded"
               style={{ background: "#008BFF" }}>
-              <AppstoreOutlined
-                className="pr-2 "
-              
-              />
+              <AppstoreOutlined className="pr-2 " />
               <Dropdown
                 menu={{
                   items,
@@ -79,28 +76,79 @@ const Navbar = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex">
-                  <FireOutlined className="pr-2"   style={{ color: "#008BFF"}} />
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex">
+                  <FireOutlined className="pr-2" style={{ color: "#008BFF" }} />
                   <p>Deals</p>
                 </Link>
                 <Link
                   href="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Home
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        Home
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
                 </Link>
                 <Link
                   href="/about"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   About
                 </Link>
                 <Link
-                  href="/services"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Services
+                  href="/shop"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        Shop
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
                 </Link>
                 <Link
+                  href="/vendors"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        Vendors
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+                </Link>
+                <Link
+                  href="/blog"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        Blog
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+                </Link>
+
+                <Link
                   href="/contact"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   Contact
                 </Link>
               </div>
