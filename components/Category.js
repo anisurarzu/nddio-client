@@ -16,7 +16,7 @@ const Category = () => {
   return (
     <div className="px-8 shadow-lg rounded-lg  pb-2">
       <h2 className="py-2 border-b border-gray-200"> Category</h2>
-      <div className="my-4 text-[13px] text-gray-500">
+      <div className="my-3 text-[13px] text-gray-500">
         <div className="grid grid-cols-5 gap-2 border border-gray-200 rounded p-1 ">
           <Image
             className=""
@@ -41,7 +41,7 @@ const Category = () => {
             src={image3} // Route of the image file
             alt="Logo"
             width={27} // Desired width of the image
-            height={27} // Desired height of the image
+            height={25} // Desired height of the image
           />
           <h4 className="col-span-4">Xiaomi</h4>
         </div>

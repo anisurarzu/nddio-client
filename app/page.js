@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       {/* 1st section */}
 
-      <section className="grid grid-cols-12 gap-4 mx-28 mt-8">
+      <section className="grid grid-cols-12 gap-4 mx-20 mt-5">
         <div className="col-span-3">
           <Category />
         </div>
