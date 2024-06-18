@@ -21,7 +21,7 @@ export default function HomeSlider() {
       <Carousel className="pl-4 ">
         <div>
           <div style={contentStyle} className="grid grid-cols-7 rounded-xl">
-            <div className="col-span-4 pl-[60px]">
+            <div className="col-span-4 pl-[60px] leading-[53px]">
               <h2
                 className="text-white text-[45px] leading-[53px] text-left pt-[80px]"
                 style={{
@@ -40,6 +40,16 @@ export default function HomeSlider() {
                 }}>
                 Sign up for the daily newsletter
               </p>
+              <div className="grid grid-cols-4 mb-8 bg-white rounded-full w-[310px] my-8 h-10 text-[10px]">
+                <div className="bg-white col-span-3 rounded-full  h-10"></div>
+                <div
+                  className="rounded-full flex items-center justify-center h-10 px-3"
+                  style={{
+                    background: "#008BFF",
+                  }}>
+                  Subscribe
+                </div>
+              </div>
             </div>
             <div className="col-span-3 pt-[80px] ">
               <Image
