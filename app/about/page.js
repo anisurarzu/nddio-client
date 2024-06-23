@@ -1,5 +1,6 @@
 import AppleSeries from "@/components/AppleSeries";
 import Features from "@/components/Features";
+import Footer from "@/components/Footer";
 import Performance from "@/components/Performance";
 import React from "react";
 
@@ -67,7 +68,8 @@ export default function About() {
       </div>
       <Features/>
       <Performance/>
-      <AppleSeries/>
+      <Footer/>
+      {/* <AppleSeries/> */}
     </main>
   );
 }
