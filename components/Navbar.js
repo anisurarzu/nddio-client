@@ -1,15 +1,11 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Dropdown, Input, Space } from "antd";
+import { Dropdown, Space } from "antd";
 import {
   DownOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-  EnvironmentOutlined,
-  AppstoreOutlined,
   FireOutlined,
+  AppstoreOutlined,
 } from "@ant-design/icons";
 
 const Navbar = () => {
@@ -21,14 +17,7 @@ const Navbar = () => {
 
   const items = [
     {
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com">
-          1st menu item
-        </a>
-      ),
+      label: <Link href="/blog">1st menu item</Link>,
       key: "0",
     },
     {
@@ -37,8 +26,8 @@ const Navbar = () => {
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.aliyun.com">
-              2nd menu item
-              </a>
+          2nd menu item
+        </a>
       ),
       key: "1",
     },
@@ -51,19 +40,43 @@ const Navbar = () => {
       disabled: true,
     },
   ];
+
+  const items2 = [
+    {
+      label: <Link href="">Blog Page</Link>,
+      key: "0",
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com">
+          2nd menu item
+        </a>
+      ),
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: "3rd menu item（disabled）",
+      key: "3",
+      disabled: true,
+    },
+  ];
+
   return (
-    <nav className="bg-white  shadow-sm">
-      <div className="max-w-7xl mx-auto ">
+    <nav className="bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div
-              className="flex-shrink-0 text-white p-2  rounded"
+              className="flex-shrink-0 text-white p-2 rounded"
               style={{ background: "#008BFF" }}>
-              <AppstoreOutlined className="pr-2 " />
-              <Dropdown
-                menu={{
-                  items,
-                }}>
+              <AppstoreOutlined className="pr-2" />
+              <Dropdown menu={{ items }}>
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
                     Browse All Categories
@@ -76,76 +89,55 @@ const Navbar = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/"
-                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex">
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
                   <FireOutlined className="pr-2" style={{ color: "#008BFF" }} />
-                  <p>Deals</p>
+                  <span>Deals</span>
                 </Link>
-                <Link
-                  href="/"
-                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space>
-                        Home
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
-                </Link>
+                <Dropdown menu={{ items }}>
+                  <Link
+                    href="/"
+                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <Space>
+                      Home
+                      <DownOutlined />
+                    </Space>
+                  </Link>
+                </Dropdown>
                 <Link
                   href="/about"
                   className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   About
                 </Link>
-                <Link
-                  href="/shop"
-                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space>
-                        Shop
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
-                </Link>
-                <Link
-                  href="/vendors"
-                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space>
-                        Vendors
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
-                </Link>
-                <Link
-                  href="/blog"
-                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space>
-                        Blog
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
-                </Link>
-
+                <Dropdown menu={{ items }}>
+                  <Link
+                    href="/shop"
+                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <Space>
+                      Shop
+                      <DownOutlined />
+                    </Space>
+                  </Link>
+                </Dropdown>
+                <Dropdown menu={{ items }}>
+                  <Link
+                    href="/vendors"
+                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <Space>
+                      Vendors
+                      <DownOutlined />
+                    </Space>
+                  </Link>
+                </Dropdown>
+                <Dropdown menu={{ items }}>
+                  <Link
+                    href=""
+                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <Space>
+                      Blog
+                      <DownOutlined />
+                    </Space>
+                  </Link>
+                </Dropdown>
                 <Link
                   href="/contact"
                   className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -183,7 +175,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
