@@ -6,45 +6,41 @@ const AppleSeries = () => {
     background: "/images/phones-bg.png",
   };
   return (
-    <section className="">
-      <div className="bg-sky-100 rounded-lg  px-6 md:px-16 lg:px-24 xl:px-32 relative">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+    <section className="mb-8 mx-auto px-4 md:px-8 lg:px-16 xl:px-[80px]">
+      <div className="bg-sky-100 rounded-lg relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Left Side: Text Content */}
-          <div className="md:w-1/2 text-center md:text-left pt-8">
-            <small className=" text-gray-700">Apple iPhone Series</small>
+          <div className="text-center md:text-left pt-4 md:pt-0 pl-4 md:pl-8">
+            <small className="text-gray-500 text-[10px] pt-2">
+              Apple iPhone Series
+            </small>
             <p
-              className="text-3xl text-gray-600 mt-4"
+              className="text-lg md:text-2xl text-gray-800 py-1"
               style={{
                 fontFamily: "Quicksand, sans-serif",
-                fontOpticalSizing: "auto",
-                fontWeight: "600", // Replace 'bold' with desired weight (e.g., '400', '700')
-                fontStyle: "normal",
+                fontWeight: "400",
               }}>
-              Stay Home & Get Your Favorite <br></br> iPhone rom our shop
+              Stay Home & Get Your Favorite <br /> iPhone from our shop
             </p>
-            <p className="text-xl  text-gray-600 mt-2">Starting from $190</p>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mt-6">
+            <p className="text-[14px] text-gray-500 my-2">Starting from $190</p>
+            <button
+              className="text-white text-[14px] py-2 px-4 rounded-md"
+              style={{ background: "#008BFF" }}>
               Shop Now
             </button>
           </div>
 
-          <div className="pl-8" style={{ position: "relative" }}>
+          {/* Right Side: Images */}
+          <div className="relative">
             <img
               src={images?.background}
-              alt="Apple Series"
-              className=""
-              style={{
-                position: "absolute",
-                right: "0px",
-                top: "0px",
-                color: "red", // Note: 'color' is not applicable to 'img', ensure this style is for a parent div or element
-              }}
+              alt="Apple Series Background"
+              className="absolute right-0 top-0 w-full h-auto"
             />
-
             <img
               src={images?.image}
-              alt="Apple Series"
-              className="h-[200px] "
+              alt="Apple Series Phones"
+              className="w-full h-auto"
             />
           </div>
         </div>
