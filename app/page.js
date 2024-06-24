@@ -6,6 +6,7 @@ import FeaturesProduct from "@/components/FeaturesProduct";
 import Footer from "@/components/Footer";
 import HomeSlider from "@/components/HomeSlider";
 import HotDeals from "@/components/HotDeals";
+import LatestProducts from "@/components/LatestProducts";
 import Price from "@/components/Price";
 import ProductList from "@/components/ProductList";
 import Image from "next/image";
@@ -67,7 +68,11 @@ export default function Home() {
       <section className="mx-20 py-4">
         <HotDeals />
       </section>
-      <section className="pt-8">
+      {/* 7th section */}
+      <section className="py-4">
+        <LatestProducts />
+      </section>
+      <section className="py-16">
         <AppleSeries />
       </section>
       {/* last section */}

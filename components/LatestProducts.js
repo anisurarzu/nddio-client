@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-export default function FeaturesProduct() {
+export default function LatestProducts() {
   const productList = [
     {
       title: "Apple iPhone 14 Pro Max 128GB Storage",
@@ -38,8 +38,8 @@ export default function FeaturesProduct() {
 
   return (
     <div className="mx-20 pt-8 ">
-      <h3 className="font-semibold pt-4 pb-8 text-[16px] text-gray-700">
-        Featured Products
+      <h3 className="font-semibold pb-8  text-[16px] text-gray-700">
+        Latest Products
       </h3>
       <div className="grid grid-cols-6 gap-4 ">
         {productList?.map((product, index) => (
