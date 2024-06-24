@@ -5,6 +5,8 @@ import Category from "@/components/Category";
 import FeaturesProduct from "@/components/FeaturesProduct";
 import Footer from "@/components/Footer";
 import HomeSlider from "@/components/HomeSlider";
+import HotDeals from "@/components/HotDeals";
+import LatestProducts from "@/components/LatestProducts";
 import Price from "@/components/Price";
 import ProductList from "@/components/ProductList";
 import Image from "next/image";
@@ -54,15 +56,23 @@ export default function Home() {
         <AccessoriesCard />
       </section>
 
-      {/* Browse Category */}
+      {/* 4th section */}
       <section className="mx-20">
         <BrowseCategory />
       </section>
-      {/* ---- */}
+      {/* 5th section */}
       <section className="py-4">
         <FeaturesProduct />
       </section>
-      <section className="pt-8">
+      {/* 6th section */}
+      <section className="mx-20 py-4">
+        <HotDeals />
+      </section>
+      {/* 7th section */}
+      <section className="py-4">
+        <LatestProducts />
+      </section>
+      <section className="py-16">
         <AppleSeries />
       </section>
       {/* last section */}

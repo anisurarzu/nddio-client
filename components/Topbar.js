@@ -56,13 +56,7 @@ const Topbar = () => {
       <div className="container mx-auto flex justify-between items-center pt-[20px]">
         <div className="text-white text-lg font-semibold text-center">
           <Link href="/">
-            <img
-              className=""
-              src={
-                "https://s3-alpha-sig.figma.com/img/1ef4/f8af/f5b91a019f2b0dffec050fe6d76dcb9c?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=B3kH5pKExkP0N3voB1xWVL7xMuXy5hfHRS0hyzyAeWw2WMStTlciuyrr84FrHkuu~vtSoZ~gaZ7PZIfQl96PWUmx~N27AKO~U1c~4V3xep~OdVT3-ayYlrHfT3bdonK7YMw3U9hgXfaYTZUgarQ24aRgWJcxwRdwMxQ35GBef3J4AvrYgsPr9bPmA0BQNk6mFH4Ez4np8M8ikQnSpGSUBbyFh0uiEz5mmLVELyJZ3uRQGDI-nDhbY2VQHibFiqSPhzIxg4R6lYxWrF7xpVpbLfDb8YFAPzDqq906xhBWzTXdOa2GZfuYSIAYnsOqDpR~~ZhbB9-e5op5ixHBrjgL0A__"
-              }
-              alt=""
-            />
+            <img className=" h-[40px]" src={"/images/mainLogo.png"} alt="" />
           </Link>
         </div>
 
