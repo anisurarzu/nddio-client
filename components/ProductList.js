@@ -32,7 +32,7 @@ export default function ProductList() {
   ];
 
   return (
-    <div className="pt-8 grid grid-cols-5 gap-2">
+    <div className=" grid grid-cols-5 gap-2">
       {productList?.map((product, index) => (
         <Card key={index} product={product} />
       ))}

@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const items = [
     {
-      label: <Link href="/blog">1st menu item</Link>,
+      label: <Link href="">1st menu item</Link>,
       key: "0",
     },
     {
@@ -120,7 +120,7 @@ const Navbar = () => {
                 </Dropdown>
                 <Dropdown menu={{ items }}>
                   <Link
-                    href="/vendors"
+                    href="/vendor"
                     className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     <Space>
                       Vendors
@@ -130,7 +130,7 @@ const Navbar = () => {
                 </Dropdown>
                 <Dropdown menu={{ items }}>
                   <Link
-                    href=""
+                    href="/blog"
                     className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     <Space>
                       Blog

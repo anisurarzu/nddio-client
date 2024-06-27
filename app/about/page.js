@@ -5,6 +5,52 @@ import Performance from "@/components/Performance";
 import React from "react";
 
 export default function About() {
+  const features = [
+    {
+      icon: "/images/icon-1.png",
+      title: "Best Prices & Offers",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquet urna in sem rutrum, sit amet tempor odio consequat.",
+      link: "#",
+       pageTitle:"Vendor",
+          pageSubTitle:"Our Great Vendor"
+    },
+    {
+      icon: "/images/icon-2.png",
+      title: "Wide Assortment",
+      description:
+        "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum sagittis varius lectus.",
+      link: "#",
+    },
+    {
+      icon: "/images/icon-3.png",
+      title: "Free Delivery",
+      description:
+        "Etiam tempus lacus vel ultrices faucibus. Integer sed urna eu lorem iaculis tristique. Aliquam erat volutpat. ",
+      link: "#",
+    },
+    {
+      icon: "/images/icon-4.png",
+      title: "Easy Returns",
+      description:
+        "Etiam tempus lacus vel ultrices faucibus. Integer sed urna eu lorem iaculis tristique. Aliquam erat volutpat. ",
+      link: "#",
+    },
+    {
+      icon: "/images/icon-5.png",
+      title: "100% Satisfaction",
+      description:
+        "Etiam tempus lacus vel ultrices faucibus. Integer sed urna eu lorem iaculis tristique. Aliquam erat volutpat. ",
+      link: "#",
+    },
+    {
+      icon: "/images/icon-6.png",
+      title: "Great Daily Deal",
+      description:
+        "Etiam tempus lacus vel ultrices faucibus. Integer sed urna eu lorem iaculis tristique. Aliquam erat volutpat. ",
+      link: "#",
+    },
+  ];
   return (
     <main>
       <div className=" ml-20 mr-20 mt-10 mb-20 flex flex-col lg:flex-row lg:space-x-12">
@@ -66,7 +112,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <Features />
+      <Features features={features} />
       <Performance />
       <AppleSeries />
       <Footer />

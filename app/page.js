@@ -46,7 +46,7 @@ export default function Home() {
               <p>Computers</p>
             </div>
           </div>
-          <div className="">
+          <div className="pt-4">
             <ProductList />
           </div>
         </div>
