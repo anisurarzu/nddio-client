@@ -131,7 +131,7 @@ const Topbar = () => {
           className={`md:flex items-center ${
             isOpen ? "block" : "hidden"
           } gap-4 text-white`}>
-          <div>Compare</div>
+          {/*  <div>Compare</div> */}
           <div>Wishlist</div>
           <div className="flex gap-1 ">
             <div>

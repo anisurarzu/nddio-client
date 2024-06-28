@@ -93,16 +93,13 @@ const Navbar = () => {
                   <FireOutlined className="pr-2" style={{ color: "#008BFF" }} />
                   <span>Deals</span>
                 </Link>
-                <Dropdown menu={{ items }}>
-                  <Link
-                    href="/"
-                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                    <Space>
-                      Home
-                      <DownOutlined />
-                    </Space>
-                  </Link>
-                </Dropdown>
+
+                <Link
+                  href="/"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Home
+                </Link>
+
                 <Link
                   href="/about"
                   className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -118,7 +115,7 @@ const Navbar = () => {
                     </Space>
                   </Link>
                 </Dropdown>
-                <Dropdown menu={{ items }}>
+                {/* <Dropdown menu={{ items }}>
                   <Link
                     href="/vendor"
                     className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -127,7 +124,7 @@ const Navbar = () => {
                       <DownOutlined />
                     </Space>
                   </Link>
-                </Dropdown>
+                </Dropdown> */}
                 <Dropdown menu={{ items }}>
                   <Link
                     href="/blog"
