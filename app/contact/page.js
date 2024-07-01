@@ -7,9 +7,7 @@ export default function Contact() {
     <main>
       <section className="grid grid-cols-3 gap-24 mx-20 px-2 py-12">
         <div>
-          <small  style={{ color: "#008BFF" }}>
-            How can help you ?
-          </small>
+          <small style={{ color: "#008BFF" }}>How can help you ?</small>
           <h3 className="text-[40px]">Let us know how we can help you</h3>
           <p className="text-gray-600 text-[12px] py-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
@@ -47,6 +45,11 @@ export default function Contact() {
             tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
           </p>
         </div>
+      </section>
+
+      <section className="py-4 mx-20">
+        <small style={{ color: "#008BFF" }}>Contact form</small>
+        <h4 className="text-[21px] py-4">Drop Us a Line</h4>
       </section>
       <AppleSeries />
       <Footer />
