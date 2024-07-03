@@ -16,11 +16,11 @@ export default function Home() {
     <main>
       {/* 1st section */}
 
-      <section className="grid grid-cols-9 gap-4 mx-20 mt-5">
-        <div className="col-span-2">
+      <section className="grid grid-cols-1 md:grid-cols-9 lg:grid:cols-9 xl:grid-cols-9 gap-4 mx-4 lg:mx-20 xl:mx-20 mt-5">
+        <div className="col-span-1 lg:col-span-2 xl:col-span-2">
           <Category />
         </div>
-        <div className="col-span-7">
+        <div className="col-span-1 lg:col-span-7 xl:col-span-7">
           <HomeSlider />
         </div>
       </section>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import logo from "./images/logo.png";
 import Search from "antd/es/input/Search";
 import { Dropdown, Input, Space } from "antd";
 import {
@@ -52,97 +51,88 @@ const Topbar = () => {
   ];
 
   return (
-    <nav style={{ background: "#008BFF" }} className=" p-4 h-[124px]">
-      <div className="container mx-auto flex justify-between items-center pt-[20px]">
-        <div className="text-white text-lg font-semibold text-center">
+    <nav className="bg-blue-500 p-4">
+      <div className="container mx-auto flex flex-wrap justify-between items-center">
+        <div className="text-white text-lg font-semibold">
           <Link href="/">
-            <img className=" h-[40px]" src={"/images/mainLogo.png"} alt="" />
+            <img className="h-10" src="/images/mainLogo.png" alt="Logo" />
           </Link>
         </div>
 
-        <div className="border-0 rounded">
-          <div className="bg-white text-[12px] p-1 text-gray-500 w-[400px] h-[50px] mt-[0px] pt-2 border-0 rounded-sm">
-            <Dropdown
-              menu={{
-                items,
-              }}>
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  All Categories
-                  <DownOutlined />
-                </Space>
+        <div className="flex-grow flex justify-center mt-4 md:mt-0">
+          <div className="relative bg-white text-sm text-gray-500 w-full md:w-96 p-1 rounded-sm flex items-center">
+            <Dropdown menu={{ items }}>
+              <a
+                onClick={(e) => e.preventDefault()}
+                className="flex items-center space-x-2">
+                <span>All Categories</span>
+                <DownOutlined />
               </a>
             </Dropdown>
-
-            <Space direction="horizontal" className="">
-              <Input
-                placeholder="Search for items..."
-                variant="borderless"
-                size="large"
-                className="text-[12px]"
-              />
-              <SearchOutlined />
-            </Space>
+            <Input
+              placeholder="Search for items..."
+              className="border-0 flex-grow mx-2"
+              size="large"
+            />
+            <SearchOutlined className="text-gray-500" />
           </div>
         </div>
-        <div className="bg-white text-[12px] text-gray-500 p-2  rounded ">
-          <EnvironmentOutlined className="pr-2" />
-          <Dropdown
-            menu={{
-              items,
-            }}>
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                Your Location
+
+        <div className="flex mt-4 md:mt-0 items-center space-x-4 text-white">
+          <div className="bg-white text-gray-500 p-2 rounded flex items-center space-x-1">
+            <EnvironmentOutlined />
+            <Dropdown menu={{ items }}>
+              <a
+                onClick={(e) => e.preventDefault()}
+                className="flex items-center space-x-1">
+                <span>Your Location</span>
                 <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </div>
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div
-          className={`md:flex items-center ${
-            isOpen ? "block" : "hidden"
-          } gap-4 text-white`}>
-          {/*  <div>Compare</div> */}
-          <div>Wishlist</div>
-          <div className="flex gap-1 ">
-            <div>
-              <ShoppingCartOutlined style={{ fontSize: "28px" }} />
-            </div>
-            <p className="text-[12px] pt-2">Cart</p>
+              </a>
+            </Dropdown>
           </div>
-          <div className="flex gap-1">
-            <UserOutlined className="text-2xl" />
 
-            <p className="text-[12px] pt-2">Account</p>
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white focus:outline-none">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          <div
+            className={`md:flex items-center ${
+              isOpen ? "block" : "hidden"
+            } space-x-4 text-sm`}>
+            <div>Wishlist</div>
+            <div className="flex items-center space-x-1">
+              <ShoppingCartOutlined className="text-xl" />
+              <span>Cart</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <UserOutlined className="text-xl" />
+              <span>Account</span>
+            </div>
           </div>
         </div>
       </div>

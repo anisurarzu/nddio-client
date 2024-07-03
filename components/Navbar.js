@@ -105,16 +105,13 @@ const Navbar = () => {
                   className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   About
                 </Link>
-                <Dropdown menu={{ items }}>
-                  <Link
-                    href="/shop"
-                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                    <Space>
-                      Shop
-                      <DownOutlined />
-                    </Space>
-                  </Link>
-                </Dropdown>
+
+                <Link
+                  href="/shop"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Shop
+                </Link>
+
                 {/* <Dropdown menu={{ items }}>
                   <Link
                     href="/vendor"
@@ -125,16 +122,13 @@ const Navbar = () => {
                     </Space>
                   </Link>
                 </Dropdown> */}
-                <Dropdown menu={{ items }}>
-                  <Link
-                    href="/blog"
-                    className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                    <Space>
-                      Blog
-                      <DownOutlined />
-                    </Space>
-                  </Link>
-                </Dropdown>
+
+                {/*  <Link
+                  href="/blog"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Blog
+                </Link> */}
+
                 <Link
                   href="/contact"
                   className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">

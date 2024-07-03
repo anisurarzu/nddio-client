@@ -12,10 +12,9 @@ import {
   FaInstagram,
   FaPinterest,
   FaYoutube,
-  FaPhoneVolume
+  FaPhoneVolume,
 } from "react-icons/fa";
-
-
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -56,9 +55,11 @@ const Footer = () => {
           <h3 className="font-bold text-base mb-4">Company</h3>
           <ul className="space-y-2">
             <li>
-              <a href="#about" className="hover:underline">
-                About us
-              </a>
+            <Link
+                  href="/about"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Blog
+                </Link>
             </li>
             <li>
               <a href="#delivery" className="hover:underline">
@@ -76,15 +77,18 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#contact" className="hover:underline">
-                Contact us
-              </a>
-            </li>
-            <li>
-              <a href="#support" className="hover:underline">
-                Support Center
-              </a>
-            </li>
+            <Link
+                  href="/contact"
+                  className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Contact Us
+                </Link>
+              </li>
+            <li><Link
+              href="/blog"
+              className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              Blog
+            </Link></li>
+            {/* h */}
             <li>
               <a href="#careers" className="hover:underline">
                 Careers
@@ -284,32 +288,27 @@ const Footer = () => {
           <div className="flex mt-2 md:mt-0 space-x-1">
             <a
               href="#facebook"
-              className="rounded-full bg-blue-500 text-white p-2"
-            >
+              className="rounded-full bg-blue-500 text-white p-2">
               <FaFacebook />
             </a>
             <a
               href="#twitter"
-              className="rounded-full bg-blue-500 text-white p-2"
-            >
+              className="rounded-full bg-blue-500 text-white p-2">
               <FaTwitter />
             </a>
             <a
               href="#instagram"
-              className="rounded-full bg-blue-500 text-white p-2"
-            >
+              className="rounded-full bg-blue-500 text-white p-2">
               <FaInstagram />
             </a>
             <a
               href="#pinterest"
-              className="rounded-full bg-blue-500 text-white p-2"
-            >
+              className="rounded-full bg-blue-500 text-white p-2">
               <FaPinterest />
             </a>
             <a
               href="#youtube"
-              className="rounded-full bg-blue-500 text-white p-2"
-            >
+              className="rounded-full bg-blue-500 text-white p-2">
               <FaYoutube />
             </a>
           </div>

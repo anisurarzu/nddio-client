@@ -1,7 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Card from "./Card";
 
 export default function ProductList() {
+
+
+  const [products, setProducts] = useState([]);
+  const getAllProducts = async () => {
+    try {
+      const res = await axios.get(`https://www.ndiio.com/api/v1/products`);
+      if (res?.status === 201) {
+        console.log('res------',res)
+        setProducts(res?.data?.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
   const productList = [
     {
       title: "Apple iPhone 14 Pro Max 128GB Storage",
@@ -33,7 +54,7 @@ export default function ProductList() {
 
   return (
     <div className=" grid grid-cols-5 gap-2">
-      {productList?.map((product, index) => (
+      {products?.map((product, index) => (
         <Card key={index} product={product} />
       ))}
     </div>
