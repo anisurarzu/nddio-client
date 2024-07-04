@@ -9,41 +9,36 @@ import HotDeals from "@/components/HotDeals";
 import LatestProducts from "@/components/LatestProducts";
 import Price from "@/components/Price";
 import ProductList from "@/components/ProductList";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
+    <main className="mx-4 md:mx-8 lg:mx-20 xl:mx-20">
       {/* 1st section */}
-
-      <section className="grid grid-cols-1 md:grid-cols-9 lg:grid:cols-9 xl:grid-cols-9 gap-4 mx-4 lg:mx-20 xl:mx-20 mt-5">
-        <div className="col-span-1 lg:col-span-2 xl:col-span-2">
+      <section className="grid grid-cols-1 md:grid-cols-9 gap-4 mt-5">
+        <div className="col-span-1 md:col-span-2">
           <Category />
         </div>
-        <div className="col-span-1 lg:col-span-7 xl:col-span-7">
+        <div className="col-span-1 md:col-span-7">
           <HomeSlider />
         </div>
       </section>
+
       {/* 2nd section */}
-      <section className="grid grid-cols-9 gap-4 mx-20 mt-12">
-        <div className="col-span-2">
+      <section className="grid grid-cols-1 md:grid-cols-9 gap-4 mt-12">
+        <div className="col-span-9 md:col-span-2 xl:col-span-2">
           <Price />
         </div>
-        <div className="col-span-7 pl-4">
-          <div className="grid grid-cols-5">
-            <h2 className="text-[21px] font-semibold col-span-1">
-              Popular Products
-            </h2>
-            <div></div>
-
-            <div className="col-span-3 grid grid-cols-7 text-[12px]">
-              <p>All</p>
-              <p>Mobiles</p>
-              <p>Ndiio Fashion</p>
-              <p>Tablets</p>
-              <p>Accessories</p>
-              <p>Electronics</p>
-              <p>Computers</p>
+        <div className="col-span-9 md:col-span-7 xl:col-span-7 pl-0 md:pl-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">Popular Products</h2>
+            <div className="hidden md:flex flex-wrap col-span-3 text-sm">
+              <p className="mr-4 cursor-pointer">All</p>
+              <p className="mr-4 cursor-pointer">Mobiles</p>
+              <p className="mr-4 cursor-pointer">Ndiio Fashion</p>
+              <p className="mr-4 cursor-pointer">Tablets</p>
+              <p className="mr-4 cursor-pointer">Accessories</p>
+              <p className="mr-4 cursor-pointer">Electronics</p>
+              <p className="mr-4 cursor-pointer">Computers</p>
             </div>
           </div>
           <div className="pt-4">
@@ -51,31 +46,38 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* 3rd section */}
-      <section className="mx-20 mt-12">
+      <section className="mt-12">
         <AccessoriesCard />
       </section>
 
       {/* 4th section */}
-      <section className="mx-20">
+      <section className="mt-12">
         <BrowseCategory />
       </section>
+
       {/* 5th section */}
       <section className="py-4">
         <FeaturesProduct />
       </section>
+
       {/* 6th section */}
-      <section className="mx-20 py-4">
+      <section className="py-4">
         <HotDeals />
       </section>
+
       {/* 7th section */}
       <section className="py-4">
         <LatestProducts />
       </section>
+
+      {/* 8th section */}
       <section className="py-16">
         <AppleSeries />
       </section>
-      {/* last section */}
+
+      {/* Footer */}
       <section>
         <Footer />
       </section>

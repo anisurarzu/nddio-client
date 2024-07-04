@@ -37,11 +37,11 @@ export default function LatestProducts() {
   ];
 
   return (
-    <div className="mx-20 pt-8 ">
-      <h3 className="font-semibold pb-8  text-[16px] text-gray-700">
+    <div className="mx-4 md:mx-8 lg:mx-20 pt-8">
+      <h3 className="font-semibold pb-4 text-lg text-gray-700">
         Latest Products
       </h3>
-      <div className="grid grid-cols-6 gap-4 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {productList?.map((product, index) => (
           <Card key={index} product={product} />
         ))}

@@ -81,14 +81,14 @@ const Topbar = () => {
         <div className="flex mt-4 md:mt-0 items-center space-x-4 text-white">
           <div className="bg-white text-gray-500 p-2 rounded flex items-center space-x-1">
             <EnvironmentOutlined />
-            <Dropdown menu={{ items }}>
+
               <a
                 onClick={(e) => e.preventDefault()}
                 className="flex items-center space-x-1">
                 <span>Your Location</span>
-                <DownOutlined />
+
               </a>
-            </Dropdown>
+
           </div>
 
           <div className="md:hidden">

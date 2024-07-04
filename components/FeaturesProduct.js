@@ -37,11 +37,11 @@ export default function FeaturesProduct() {
   ];
 
   return (
-    <div className="mx-20 pt-8 ">
-      <h3 className="font-semibold pt-4 pb-8 text-[16px] text-gray-700">
+    <div className="mx-8 md:mx-20 pt-8">
+      <h3 className="font-semibold text-lg text-gray-700 mb-4">
         Featured Products
       </h3>
-      <div className="grid grid-cols-6 gap-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {productList?.map((product, index) => (
           <Card key={index} product={product} />
         ))}
