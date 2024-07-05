@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-import Search from "antd/es/input/Search";
-import { Dropdown, Input, Space } from "antd";
+import { Dropdown, Input, Modal } from "antd";
 import {
   DownOutlined,
   SearchOutlined,
@@ -12,11 +10,22 @@ import {
   UserOutlined,
   EnvironmentOutlined,
 } from "@ant-design/icons";
+import Cart from "./Cart";
 
-const Topbar = () => {
+const Topbar = ({ cartItems, removeFromCart }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const onSearch = (value, _e, info) => console.log(info?.source, value);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const items = [
     {
       label: (
@@ -81,14 +90,11 @@ const Topbar = () => {
         <div className="flex mt-4 md:mt-0 items-center space-x-4 text-white">
           <div className="bg-white text-gray-500 p-2 rounded flex items-center space-x-1">
             <EnvironmentOutlined />
-
-              <a
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center space-x-1">
-                <span>Your Location</span>
-
-              </a>
-
+            <a
+              onClick={(e) => e.preventDefault()}
+              className="flex items-center space-x-1">
+              <span>Your Location</span>
+            </a>
           </div>
 
           <div className="md:hidden">
@@ -125,9 +131,18 @@ const Topbar = () => {
               isOpen ? "block" : "hidden"
             } space-x-4 text-sm`}>
             <div>Wishlist</div>
-            <div className="flex items-center space-x-1">
+            <div
+              className="flex items-center space-x-1 relative"
+              onClick={() => {
+                showModal();
+              }}>
               <ShoppingCartOutlined className="text-xl" />
               <span>Cart</span>
+              {cartItems.length > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
             </div>
             <div className="flex items-center space-x-1">
               <UserOutlined className="text-xl" />
@@ -136,6 +151,14 @@ const Topbar = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        title="Basic Modal"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}>
+        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+      </Modal>
     </nav>
   );
 };

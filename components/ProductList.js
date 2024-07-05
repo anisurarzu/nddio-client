@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
+import Cart from "./Cart";
 
-export default function ProductList() {
+export default function ProductList({ cartItems, addToCart, removeFromCart }) {
   const [products, setProducts] = useState([]);
 
   const getAllProducts = async () => {
@@ -23,40 +24,14 @@ export default function ProductList() {
     getAllProducts();
   }, []);
 
-  const productList = [
-    {
-      title: "Apple iPhone 14 Pro Max 128GB Storage",
-      image: "/images/product1.png",
-      price: 228.55,
-    },
-    {
-      title: "Apple iPhone 14 Pro Max 128GB Storage",
-      image: "/images/product1.png",
-      price: 228.55,
-    },
-    {
-      title: "Apple iPhone 14 Pro Max 128GB Storage",
-      image: "/images/product1.png",
-      price: 228.55,
-    },
-    {
-      title: "Apple iPhone 15 Pro Max 256GB",
-      image: "/images/product5.png",
-      price: 228.55,
-    },
-    {
-      title: "I phone 14 pro 100 - HP Store",
-      image: "/images/product5.png",
-      price: 23.55,
-    },
-    // Add more products as needed
-  ];
-
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
-      {products?.map((product, index) => (
-        <Card key={index} product={product} />
-      ))}
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {products?.map((product, index) => (
+          <Card key={index} product={product} addToCart={addToCart} />
+        ))}
+      </div>
+      {/* <Cart cartItems={cartItems} removeFromCart={removeFromCart} /> */}
     </div>
   );
 }
