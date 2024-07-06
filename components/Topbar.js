@@ -12,7 +12,7 @@ import {
 } from "@ant-design/icons";
 import Cart from "./Cart";
 
-const Topbar = ({ cartItems, removeFromCart }) => {
+const Topbar = ({ cartItems, setCartItems, removeFromCart }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,8 +32,11 @@ const Topbar = ({ cartItems, removeFromCart }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.antgroup.com">
-          1st menu item
+          href="">
+         Mobile and accessories
+-Industrial Machine 
+-Tools&Home 
+-Sport &Entertainmen
         </a>
       ),
       key: "0",
@@ -139,7 +142,7 @@ const Topbar = ({ cartItems, removeFromCart }) => {
               <ShoppingCartOutlined className="text-xl" />
               <span>Cart</span>
               {cartItems.length > 0 && (
-                <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                <span className="absolute top-[-14px] left-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                   {cartItems.length}
                 </span>
               )}
@@ -155,9 +158,13 @@ const Topbar = ({ cartItems, removeFromCart }) => {
       <Modal
         title="My Cart"
         open={isModalOpen}
-        onOk={handleOk}
+        // onOk={handleOk}
         onCancel={handleCancel}>
-        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        <Cart
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          removeFromCart={removeFromCart}
+        />
       </Modal>
     </nav>
   );

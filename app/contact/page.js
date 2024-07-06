@@ -1,10 +1,48 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import AppleSeries from "@/components/AppleSeries";
 import Footer from "@/components/Footer";
+import Topbar from "@/components/Topbar";
+import Navbar from "@/components/Navbar";
 
 export default function Contact() {
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(savedCartItems);
+  }, []);
+
+  const addToCart = (product) => {
+    console.log("product", product);
+    // Find the index of the product in the cart if it exists
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    let newCartItems;
+
+    if (productIndex !== -1) {
+      // If the product is already in the cart, increase its quantity
+      newCartItems = cartItems.map((item, index) =>
+        index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      newCartItems = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    // Update the state and local storage
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
+
+  const removeFromCart = (id) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
   return (
     <main>
+      <Topbar cartItems={cartItems} removeFromCart={removeFromCart} />
+      <Navbar />
       <section className="grid grid-cols-3 gap-24 mx-20 px-2 py-12">
         <div>
           <small style={{ color: "#008BFF" }}>How can help you ?</small>

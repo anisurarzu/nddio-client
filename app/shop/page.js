@@ -18,6 +18,7 @@ const page = () => {
   }, []);
 
   const addToCart = (product) => {
+    console.log("product", product);
     // Find the index of the product in the cart if it exists
     const productIndex = cartItems.findIndex((item) => item.id === product.id);
 
@@ -56,7 +57,7 @@ const page = () => {
 
   return (
     <main>
-      <Topbar cartItems={cartItems} removeFromCart={removeFromCart} />
+      <Topbar cartItems={cartItems} setCartItems={setCartItems} removeFromCart={removeFromCart} />
       <Navbar />
       <header className="bg-blue-200 p-8  rounded grid grid-cols-2 mx-20">
         <div className="col-span-1">
@@ -113,16 +114,20 @@ const page = () => {
 
       <section className="grid grid-cols-4 gap-4 mx-20">
         <div className="col-span-3">
-          <ProductList />
+          <ProductList cartItems={cartItems}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart} />
         </div>
         <div className="col-span-1">
-          {" "}
+
           <Category />
         </div>
       </section>
       <section className="grid grid-cols-12 gap-4 mx-20">
         <div className="col-span-9">
-          <ProductList />
+          <ProductList cartItems={cartItems}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}  />
         </div>
         <div className="col-span-3 pt-2">
           <Price />
@@ -130,7 +135,9 @@ const page = () => {
       </section>
       <section className="grid grid-cols-12 gap-4 mx-20">
         <div className="col-span-9">
-          <ProductList />
+          <ProductList cartItems={cartItems}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}  />
         </div>
         <div className="col-span-3 pt-4">
           <div className="max-w-sm mx-auto bg-white rounded-lg shadow-md p-2 mb-5 ml-2 pt-2">

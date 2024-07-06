@@ -1,10 +1,46 @@
+"use client";
 import AppleSeries from "@/components/AppleSeries";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Performance from "@/components/Performance";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Topbar from "@/components/Topbar";
+import Navbar from "@/components/Navbar";
 
 export default function About() {
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(savedCartItems);
+  }, []);
+
+  const addToCart = (product) => {
+    console.log("product", product);
+    // Find the index of the product in the cart if it exists
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    let newCartItems;
+
+    if (productIndex !== -1) {
+      // If the product is already in the cart, increase its quantity
+      newCartItems = cartItems.map((item, index) =>
+        index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      newCartItems = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    // Update the state and local storage
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
+
+  const removeFromCart = (id) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
   const features = [
     {
       icon: "/images/icon-1.png",
@@ -53,6 +89,8 @@ export default function About() {
   ];
   return (
     <main>
+       <Topbar  cartItems={cartItems} removeFromCart={removeFromCart}/>
+       <Navbar />
       <div className=" ml-20 mr-20 mt-10 mb-20 flex flex-col lg:flex-row lg:space-x-12">
         <div className="w-full lg:w-1/3 flex justify-center items-center mb-10 lg:mb-0">
           <img

@@ -12,7 +12,7 @@ export default function Card({ product, addToCart }) {
     <div className="border border-gray-100 rounded-xl shadow-sm">
       <img
         src={product?.image}
-        alt={product?.title}
+        alt={''}
         className="w-full h-48 object-cover rounded-t-xl"
       />
       <div className="p-4">

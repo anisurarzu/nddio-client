@@ -23,20 +23,36 @@ export default function Home() {
   }, []);
 
   const addToCart = (product) => {
-    const newCartItems = [...cartItems, product];
+    console.log("product", product);
+    // Find the index of the product in the cart if it exists
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    let newCartItems;
+
+    if (productIndex !== -1) {
+      // If the product is already in the cart, increase its quantity
+      newCartItems = cartItems.map((item, index) =>
+        index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      newCartItems = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    // Update the state and local storage
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   const removeFromCart = (id) => {
-    const newCartItems = cartItems.filter(item => item.id !== id);
+    const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
-  
+
   return (
     <main>
-      <Topbar cartItems={cartItems} removeFromCart={removeFromCart} />
+      <Topbar cartItems={cartItems} setCartItems={setCartItems} removeFromCart={removeFromCart} />
       <Navbar />
       {/* 1st section */}
       <div className="mx-4 md:mx-8 lg:mx-20 xl:mx-20">
@@ -86,7 +102,9 @@ export default function Home() {
         </section>
         {/* 5th section */}
         <section className="py-4">
-          <FeaturesProduct />
+          <FeaturesProduct cartItems={cartItems}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart} />
         </section>
         {/* 6th section */}
         <section className="py-4">
@@ -94,7 +112,9 @@ export default function Home() {
         </section>
         {/* 7th section */}
         <section className="py-4">
-          <LatestProducts />
+          <LatestProducts cartItems={cartItems}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart} />
         </section>
         {/* 8th section */}
         <section className="py-16">
