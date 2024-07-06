@@ -1,10 +1,6 @@
 "use client";
-import { Flex, Rate } from "antd";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-
-const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+import React from "react";
 
 export default function Card({
   cartItems,
@@ -33,13 +29,15 @@ export default function Card({
   };
 
   return (
-    <div>
+    <div className="container mx-auto px-4">
       {cartItems?.map((item, index) => (
-        <div className="card-item border p-2 my-2 flex justify-between gap-4">
-          <h4>{item?.title}</h4>
+        <div
+          key={index}
+          className="border p-4 my-2 flex flex-col md:flex-row justify-between gap-4">
+          <h4 className="text-lg md:text-xl">{item?.title}</h4>
 
-          <div className="quantity-controls flex gap-2">
-            <div className="flex gap-2">
+          <div className="flex gap-2 items-center md:w-1/2 lg:w-1/3">
+            <div className="flex items-center gap-2">
               <p
                 onClick={() => {
                   decreaseQuantity(item?.id);
@@ -68,22 +66,6 @@ export default function Card({
           </div>
         </div>
       ))}
-      <style jsx>{`
-        .card-item {
-          flex-direction: column;
-        }
-
-        .quantity-controls {
-          width: 100%;
-          justify-content: space-between;
-        }
-
-        @media (min-width: 640px) {
-          .card-item {
-            flex-direction: row;
-          }
-        }
-      `}</style>
     </div>
   );
 }
