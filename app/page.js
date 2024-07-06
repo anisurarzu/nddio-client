@@ -28,11 +28,12 @@ export default function Home() {
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
-  const removeFromCart = (index) => {
-    const newCartItems = cartItems.filter((item, i) => i !== index);
+  const removeFromCart = (id) => {
+    const newCartItems = cartItems.filter(item => item.id !== id);
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
+  
   return (
     <main>
       <Topbar cartItems={cartItems} removeFromCart={removeFromCart} />

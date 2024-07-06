@@ -132,7 +132,7 @@ const Topbar = ({ cartItems, removeFromCart }) => {
             } space-x-4 text-sm`}>
             <div>Wishlist</div>
             <div
-              className="flex items-center space-x-1 relative"
+              className="flex items-center space-x-1 relative cursor-pointer"
               onClick={() => {
                 showModal();
               }}>
@@ -153,7 +153,7 @@ const Topbar = ({ cartItems, removeFromCart }) => {
       </div>
 
       <Modal
-        title="Basic Modal"
+        title="My Cart"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}>

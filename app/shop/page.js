@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import AppleSeries from "@/components/AppleSeries";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
@@ -6,8 +7,43 @@ import Category from "@/components/Category";
 import ProductList from "@/components/ProductList";
 import LatestProducts from "@/components/LatestProducts";
 import Price from "@/components/Price";
+import Topbar from "@/components/Topbar";
+import Navbar from "@/components/Navbar";
 
 const page = () => {
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(savedCartItems);
+  }, []);
+
+  const addToCart = (product) => {
+    // Find the index of the product in the cart if it exists
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    let newCartItems;
+
+    if (productIndex !== -1) {
+      // If the product is already in the cart, increase its quantity
+      newCartItems = cartItems.map((item, index) =>
+        index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      newCartItems = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    // Update the state and local storage
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
+
+  const removeFromCart = (id) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
+
   const trendingItems = [
     {
       id: 1,
@@ -20,6 +56,8 @@ const page = () => {
 
   return (
     <main>
+      <Topbar cartItems={cartItems} removeFromCart={removeFromCart} />
+      <Navbar />
       <header className="bg-blue-200 p-8  rounded grid grid-cols-2 mx-20">
         <div className="col-span-1">
           <h1 className="text-2xl md:text-4xl font-bold">Shop</h1>
@@ -87,7 +125,6 @@ const page = () => {
           <ProductList />
         </div>
         <div className="col-span-3 pt-2">
-         
           <Price />
         </div>
       </section>
@@ -96,7 +133,6 @@ const page = () => {
           <ProductList />
         </div>
         <div className="col-span-3 pt-4">
-         
           <div className="max-w-sm mx-auto bg-white rounded-lg shadow-md p-2 mb-5 ml-2 pt-2">
             <h2 className="font-semibold text-gray-800 p-4 border-b">
               Trending Now
