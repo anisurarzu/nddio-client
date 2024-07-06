@@ -19,6 +19,7 @@ export default function Card({
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
+
   const decreaseQuantity = (productId) => {
     const newCartItems = cartItems
       .map((item) =>
@@ -34,16 +35,16 @@ export default function Card({
   return (
     <div>
       {cartItems?.map((item, index) => (
-        <div className="border p-2 my-2 flex justify-between gap-4">
+        <div className="card-item border p-2 my-2 flex justify-between gap-4">
           <h4>{item?.title}</h4>
 
-          <div className="flex gap-2">
+          <div className="quantity-controls flex gap-2">
             <div className="flex gap-2">
               <p
                 onClick={() => {
                   decreaseQuantity(item?.id);
                 }}
-                className="cursor-pointer  bg-red-600 px-2 rounded text-white text-[17px]">
+                className="cursor-pointer bg-red-600 px-2 rounded text-white text-[17px]">
                 -
               </p>
               <p className="cursor-pointer border border-blue-200 px-3 rounded text-[17px]">
@@ -53,13 +54,12 @@ export default function Card({
                 onClick={() => {
                   increaseQuantity(item?.id);
                 }}
-                className="cursor-pointer  bg-green-600 px-2 rounded text-white text-[17px]">
+                className="cursor-pointer bg-green-600 px-2 rounded text-white text-[17px]">
                 +
               </p>
             </div>
             <button
               onClick={() => {
-                console.log("---hit");
                 removeFromCart(item.id);
               }}
               className="p-1 bg-red-600 text-white rounded">
@@ -68,6 +68,22 @@ export default function Card({
           </div>
         </div>
       ))}
+      <style jsx>{`
+        .card-item {
+          flex-direction: column;
+        }
+
+        .quantity-controls {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        @media (min-width: 640px) {
+          .card-item {
+            flex-direction: row;
+          }
+        }
+      `}</style>
     </div>
   );
 }

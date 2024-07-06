@@ -1,11 +1,65 @@
 "use client";
 import AppleSeries from "@/components/AppleSeries";
+import axios from "axios";
 import Category from "@/components/Category";
 import Footer from "@/components/Footer";
 import { Pagination } from "antd";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Topbar from "@/components/Topbar";
+import Navbar from "@/components/Navbar";
 export default function Page() {
+  const [cartItems, setCartItems] = useState([]);
+  const [faqData, setFaqData] = useState([]);
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(savedCartItems);
+  }, []);
+
+  /* faqs */
+
+  const getFaq = async () => {
+    try {
+      const res = await axios.get(`https://www.ndiio.com/api/v1/faqs`);
+      if (res?.status === 201) {
+        console.log("res------", res);
+        setFaqData(res?.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getFaq();
+  }, []);
+
+  const addToCart = (product) => {
+    console.log("product", product);
+    // Find the index of the product in the cart if it exists
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    let newCartItems;
+
+    if (productIndex !== -1) {
+      // If the product is already in the cart, increase its quantity
+      newCartItems = cartItems.map((item, index) =>
+        index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      newCartItems = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    // Update the state and local storage
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
+
+  const removeFromCart = (id) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
   const articles = [
     {
       id: 1,
@@ -132,6 +186,12 @@ export default function Page() {
 
   return (
     <div>
+      <Topbar
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        removeFromCart={removeFromCart}
+      />
+      <Navbar />
       <div className="ml-5 mr-5 md:ml-20 md:mr-20 mt-4">
         <header className="bg-blue-200 p-8  rounded grid grid-cols-2">
           <div className="col-span-1">
@@ -149,14 +209,12 @@ export default function Page() {
               (label, index) => (
                 <button
                   key={index}
-                  className="px-4 py-2 bg-white rounded-lg shadow flex items-center space-x-2"
-                >
+                  className="px-4 py-2 bg-white rounded-lg shadow flex items-center space-x-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 text-blue-500"
                     viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
+                    fill="currentColor">
                     <path
                       fillRule="evenodd"
                       d="M10 1a9 9 0 100 18 9 9 0 000-18zm2.707 10.707a1 1 0 01-1.414 0L10 9.414l-1.293 1.293a1 1 0 01-1.414-1.414L8.586 8l-1.293-1.293a1 1 0 011.414-1.414L10 6.586l1.293-1.293a1 1 0 011.414 1.414L11.414 8l1.293 1.293a1 1 0 010 1.414z"
@@ -188,8 +246,7 @@ export default function Page() {
               {articles.map((article) => (
                 <div
                   key={article.id}
-                  className="bg-white p-4 rounded-lg shadow"
-                >
+                  className="bg-white p-4 rounded-lg shadow">
                   <img
                     src={article.image}
                     alt={article.name}
@@ -228,8 +285,7 @@ export default function Page() {
                 {trendingItems.map((item) => (
                   <li
                     key={item.id}
-                    className="flex items-center p-4 border-b last:border-b-0"
-                  >
+                    className="flex items-center p-4 border-b last:border-b-0">
                     <img
                       className="w-12 h-12 rounded object-cover"
                       src={item.imageUrl}
@@ -245,8 +301,7 @@ export default function Page() {
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5 inline-block"
                           viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
+                          fill="currentColor">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.562 4.783a1 1 0 00.95.69h5.028c.969 0 1.371 1.24.588 1.81l-4.072 2.957a1 1 0 00-.364 1.118l1.562 4.783c.3.921-.755 1.688-1.54 1.118L10 15.347l-4.073 2.957c-.784.57-1.838-.197-1.539-1.118l1.561-4.783a1 1 0 00-.364-1.118L1.512 10.21c-.783-.57-.38-1.81.588-1.81h5.028a1 1 0 00.95-.69L9.049 2.927z" />
                         </svg>
                       </div>

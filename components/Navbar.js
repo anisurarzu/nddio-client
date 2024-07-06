@@ -17,25 +17,29 @@ const Navbar = () => {
 
   const items = [
     {
-      label: <Link href="">1st menu item</Link>,
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="">
+          Mobile and accessories
+        </a>
+      ),
       key: "0",
     },
     {
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com">
-          2nd menu item
+        <a target="_blank" rel="noopener noreferrer" href="">
+          Industrial Machine
         </a>
       ),
       key: "1",
     },
+
     {
-      type: "divider",
+      label: "Tools&Home ",
+      key: "3",
+      disabled: true,
     },
     {
-      label: "3rd menu item（disabled）",
+      label: "Sport & Entertainmen ",
       key: "3",
       disabled: true,
     },

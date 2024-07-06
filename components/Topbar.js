@@ -34,9 +34,6 @@ const Topbar = ({ cartItems, setCartItems, removeFromCart }) => {
           rel="noopener noreferrer"
           href="">
          Mobile and accessories
--Industrial Machine 
--Tools&Home 
--Sport &Entertainmen
         </a>
       ),
       key: "0",
@@ -46,17 +43,20 @@ const Topbar = ({ cartItems, setCartItems, removeFromCart }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.aliyun.com">
-          2nd menu item
+          href="">
+          Industrial Machine 
         </a>
       ),
       key: "1",
     },
+    
     {
-      type: "divider",
+      label: "Tools&Home ",
+      key: "3",
+      disabled: true,
     },
     {
-      label: "3rd menu item（disabled）",
+      label: "Sport & Entertainmen ",
       key: "3",
       disabled: true,
     },
