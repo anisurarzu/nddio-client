@@ -243,24 +243,24 @@ export default function Page() {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles.map((article) => (
+              {faqData?.rows?.map((article) => (
                 <div
                   key={article.id}
                   className="bg-white p-4 rounded-lg shadow">
                   <img
                     src={article.image}
-                    alt={article.name}
+                    
                     className="w-full h-48 rounded-lg object-cover mb-4"
                   />
                   <div className="text-center">
                     <h3 className="text-lg font-semibold mb-2">
-                      {article.name}
+                      {article.title}
                     </h3>
                     <div className="text-gray-500 text-sm mb-1">
-                      {article.date}
+                      {article.content}
                     </div>
                     <div className="text-gray-500 text-sm mb-1">
-                      {article.views}
+                      {article.created_at?.slice(0,10)}
                     </div>
                     <div className="text-gray-500 text-sm">
                       {article.readTime}
