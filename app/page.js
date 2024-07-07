@@ -13,6 +13,8 @@ import Price from "@/components/Price";
 import ProductList from "@/components/ProductList";
 import Topbar from "@/components/Topbar";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +25,7 @@ export default function Home() {
   }, []);
 
   const addToCart = (product) => {
+  
     console.log("product", product);
     // Find the index of the product in the cart if it exists
     const productIndex = cartItems.findIndex((item) => item.id === product.id);
@@ -34,9 +37,11 @@ export default function Home() {
       newCartItems = cartItems.map((item, index) =>
         index === productIndex ? { ...item, quantity: item.quantity + 1 } : item
       );
+      toast.success("Allready added, Quantity Increased");
     } else {
       // If the product is not in the cart, add it with quantity 1
       newCartItems = [...cartItems, { ...product, quantity: 1 }];
+      toast.success("Successfully added to cart");
     }
 
     // Update the state and local storage
@@ -52,6 +57,7 @@ export default function Home() {
 
   return (
     <main>
+      <ToastContainer />
       <Topbar cartItems={cartItems} setCartItems={setCartItems} removeFromCart={removeFromCart} />
       <Navbar />
       {/* 1st section */}

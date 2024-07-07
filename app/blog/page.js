@@ -19,7 +19,7 @@ export default function Page() {
 
   const getFaq = async () => {
     try {
-      const res = await axios.get(`https://www.ndiio.com/api/v1/faqs`);
+      const res = await axios.post(`https://www.ndiio.com/api/v1/get-blog`);
       if (res?.status === 201) {
         console.log("res------", res);
         setFaqData(res?.data);
@@ -32,6 +32,16 @@ export default function Page() {
   useEffect(() => {
     getFaq();
   }, []);
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `Notification ${placement}`,
+      description: (
+        <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>
+      ),
+      placement,
+    });
+  };
 
   const addToCart = (product) => {
     console.log("product", product);
@@ -53,6 +63,7 @@ export default function Page() {
     // Update the state and local storage
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+    openNotification("bottomRight");
   };
 
   const removeFromCart = (id) => {
@@ -249,7 +260,6 @@ export default function Page() {
                   className="bg-white p-4 rounded-lg shadow">
                   <img
                     src={article.image}
-                    
                     className="w-full h-48 rounded-lg object-cover mb-4"
                   />
                   <div className="text-center">
@@ -260,7 +270,7 @@ export default function Page() {
                       {article.content}
                     </div>
                     <div className="text-gray-500 text-sm mb-1">
-                      {article.created_at?.slice(0,10)}
+                      {article.created_at?.slice(0, 10)}
                     </div>
                     <div className="text-gray-500 text-sm">
                       {article.readTime}

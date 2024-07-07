@@ -1,6 +1,6 @@
 "use client";
-import { Flex, Rate } from "antd";
-import React, { useState } from "react";
+import { Flex, Rate,Button, Divider, notification, Space } from "antd";
+import React, { useState,useMemo } from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
@@ -8,11 +8,13 @@ const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 export default function Card({ product, addToCart }) {
   const [value, setValue] = useState(3);
 
+  
+
   return (
     <div className="border border-gray-100 rounded-xl shadow-sm">
       <img
         src={product?.image}
-        alt={''}
+        alt={""}
         className="w-full h-48 object-cover rounded-t-xl"
       />
       <div className="p-4">
@@ -46,6 +48,8 @@ export default function Card({ product, addToCart }) {
             <ShoppingCartOutlined className="text-xl" />
             <span className="text-[15px]">Add</span>
           </button>
+
+         
         </div>
       </div>
     </div>
