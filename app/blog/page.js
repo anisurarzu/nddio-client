@@ -9,7 +9,7 @@ import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
 export default function Page() {
   const [cartItems, setCartItems] = useState([]);
-  const [faqData, setFaqData] = useState([]);
+  const [blogData, setBlogData] = useState([]);
   useEffect(() => {
     const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(savedCartItems);
@@ -17,12 +17,13 @@ export default function Page() {
 
   /* faqs */
 
-  const getFaq = async () => {
+  const getBlogs = async () => {
     try {
-      const res = await axios.get(`https://www.ndiio.com/api/v1/faqs`);
+      const res = await axios.get(`https://www.ndiio.com/api/v1/get-blogs`);
       if (res?.status === 201) {
-        console.log("res------", res);
-        setFaqData(res?.data);
+       
+        setBlogData(res?.data?.data);
+         console.log("res------", blogData);
       }
     } catch (err) {
       console.log(err);
@@ -30,7 +31,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    getFaq();
+    getBlogs();
   }, []);
 
   const addToCart = (product) => {
@@ -243,13 +244,13 @@ export default function Page() {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles.map((article) => (
+              {blogData?.map((article) => (
                 <div
                   key={article.id}
                   className="bg-white p-4 rounded-lg shadow">
                   <img
-                    src={article.image}
-                    alt={article.name}
+                    src={article.featured_image}
+                    alt={article.title}
                     className="w-full h-48 rounded-lg object-cover mb-4"
                   />
                   <div className="text-center">
