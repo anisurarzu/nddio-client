@@ -255,17 +255,17 @@ export default function Page() {
                   />
                   <div className="text-center">
                     <h3 className="text-lg font-semibold mb-2">
-                      {article.name}
+                      {article.title}
                     </h3>
                     <div className="text-gray-500 text-sm mb-1">
-                      {article.date}
+                      {article.content}
                     </div>
-                    <div className="text-gray-500 text-sm mb-1">
+                    {/* <div className="text-gray-500 text-sm mb-1">
                       {article.views}
                     </div>
                     <div className="text-gray-500 text-sm">
                       {article.readTime}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
